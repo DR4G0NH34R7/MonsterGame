@@ -62,12 +62,6 @@ namespace MonsterGame
             Scroll();
         }
 
-        public void HitBySpell(int damage, int multiplier)
-        {
-            Console.WriteLine("You are hit by a spell for {0} damage!", damage * multiplier);
-            Scroll();
-        }
-
         public void HPLeft(int hp)
         {
             Console.WriteLine("HP left: " + hp);

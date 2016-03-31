@@ -28,16 +28,6 @@ namespace MonsterGame
             boss.TakesDamage(attackValue);
         }
 
-        public void HitBySpell(int damage)
-        {
-            int multiplier = Dice.ThrowDice();
-            if (multiplier != 6)
-            {
-                display.HitBySpell(damage, multiplier);
-                TakesDamage(damage * multiplier);
-            }
-        }
-
         public void TakesDamage(int damage)
         {
             if (!Blocked())
