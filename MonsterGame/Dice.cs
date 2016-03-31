@@ -12,7 +12,7 @@ namespace MonsterGame
 
         public static int ThrowDice()
         {
-           return random.Next(1,7);
+            return random.Next(1, 7);
         }
 
         public static int ThrowDice(int diceType)

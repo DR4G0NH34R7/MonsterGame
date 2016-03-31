@@ -14,7 +14,7 @@ namespace MonsterGame
         {
             base.Attack(player);
             if (player.IsAlive)
-            Spell(player);
+                Spell(player);
 
         }
 
