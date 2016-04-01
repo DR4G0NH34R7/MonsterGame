@@ -8,8 +8,6 @@ namespace MonsterGame
 {
     public class Player
     {
-        private DisplayAction display = new DisplayAction(true);
-
         public int HP { get; private set; }
         public bool IsAlive { get { return HP > 0; } }
 
@@ -24,7 +22,7 @@ namespace MonsterGame
         public void Attack(FinalBoss boss)
         {
             int attackValue = Dice.ThrowDice(25);
-            display.PlayerAttackVSBoss(attackValue);
+            DisplayAction.PlayerAttackVSBoss(attackValue);
             boss.TakesDamage(attackValue);
         }
 
@@ -33,10 +31,10 @@ namespace MonsterGame
             if (!Blocked())
             {
                 HP -= damage;
-                display.HPLeft(HP);
+                DisplayAction.HPLeft(HP);
             }
             else
-                display.DamageBlocked();
+                DisplayAction.DamageBlocked();
         }
 
         private bool Blocked()

@@ -7,24 +7,22 @@ using System.Threading.Tasks;
 
 namespace MonsterGame
 {
-    public class DisplayAction
+    public static class DisplayAction
     {
-        public bool AutoScrollOption { get; set; }
-
-        /// <summary>
-        /// Initialise une nouvelle instance de la classe <see cref="DisplayAction"/>
-        /// </summary>
-        public DisplayAction()
+        private static bool autoScrollOptionValue = false;
+        public static bool AutoScrollOption
         {
-            AutoScrollOption = false;
+            get
+            {
+                return autoScrollOptionValue;
+            }
+            set
+            {
+                autoScrollOptionValue = value;
+            }
         }
 
-        public DisplayAction(bool AutoScrollSet)
-        {
-            AutoScrollOption = AutoScrollSet;
-        }
-
-        public void Menu()
+        public static void Menu()
         {
             Console.Clear();
             Console.WriteLine("Please select game mode :");
@@ -32,105 +30,105 @@ namespace MonsterGame
             Console.WriteLine("\t2 : Final boss");
         }
 
-        public void NewGame()
+        public static void NewGame()
         {
             Console.WriteLine("New game started. You have 150 HP.");
             Scroll();
         }
 
-        public void MonsterEncounter()
+        public static void MonsterEncounter()
         {
             Console.WriteLine("You have encountered a monster!");
             Scroll();
         }
 
-        public void PlayerAttack()
+        public static void PlayerAttack()
         {
             Console.WriteLine("You attack the monster.");
             Scroll();
         }
 
-        public void PlayerAttackVSBoss(int damage)
+        public static void PlayerAttackVSBoss(int damage)
         {
             Console.WriteLine("You attack for {0} damage!", damage);
             Scroll();
         }
 
-        public void FailedPlayerAttack()
+        public static void FailedPlayerAttack()
         {
             Console.WriteLine("You failed your attack. The monster strikes back!");
             Scroll();
         }
 
-        public void HPLeft(int hp)
+        public static void HPLeft(int hp)
         {
             Console.WriteLine("HP left: " + hp);
             Scroll();
         }
 
-        public void BossHPLeft(int hp)
+        public static void BossHPLeft(int hp)
         {
             Console.WriteLine("Boss HP left: " + hp);
             Scroll();
         }
 
-        public void DamageBlocked()
+        public static void DamageBlocked()
         {
             Console.WriteLine("You blocked the damage with your shield!");
             Scroll();
         }
 
-        public void MonsterAttack(int damage)
+        public static void MonsterAttack(int damage)
         {
             Console.WriteLine("The monster attacks for {0} damage!", damage);
             Scroll();
         }
 
-        public void SpellCast(int crit, int spellDamage)
+        public static void SpellCast(int crit, int spellDamage)
         {
             Console.WriteLine("The monster casts a level {0} spell for {1} damage!", crit, crit * spellDamage);
             Scroll();
         }
 
-        public void BossAttack(int damage)
+        public static void BossAttack(int damage)
         {
             Console.WriteLine("The boss attacks you for {0} damage!", damage);
             Scroll();
         }
 
-        public void MonsterKilled()
+        public static void MonsterKilled()
         {
             Console.WriteLine("You kill the monster!");
             Scroll();
         }
 
-        public void PlayerDeath()
+        public static void PlayerDeath()
         {
             Console.WriteLine("u ded :(");
             Scroll();
         }
 
-        public void EndGame(int easyKills, int hardKills)
+        public static void EndGame(int easyKills, int hardKills)
         {
             int score = easyKills + 2 * hardKills;
             Console.WriteLine("You have achieved {0} easy kills and {1} hard kills for a total score of {2} points!", easyKills, hardKills, score);
             Scroll();
         }
 
-        public void BossVanquished()
+        public static void BossVanquished()
         {
             CenterText("Congratulations! You saved the princess (or the prince)!");
             Scroll();
         }
 
-        public void GameOver()
+        public static void GameOver()
         {
             Console.Clear();
             CenterText("Game Over");
             Scroll();
         }
 
-        private void Scroll()
+        private static void Scroll()
         {
             if (AutoScrollOption)
                 Thread.Sleep((int)TimeSpan.FromSeconds(0.5).TotalMilliseconds);

@@ -8,18 +8,18 @@ namespace MonsterGame
 {
     class Program
     {
-        private static DisplayAction display = new DisplayAction(true);
         /// <summary>
         /// 
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            display.Menu();
+            DisplayAction.AutoScrollOption = true;
+            DisplayAction.Menu();
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey(true);
             while (consoleKeyInfo.Key != ConsoleKey.D1 && consoleKeyInfo.Key != ConsoleKey.D2 && consoleKeyInfo.Key != ConsoleKey.NumPad1 && consoleKeyInfo.Key != ConsoleKey.NumPad2)
             {
-                display.Menu();
+                DisplayAction.Menu();
                 consoleKeyInfo = Console.ReadKey(true);
             }
             if (consoleKeyInfo.Key == ConsoleKey.D1 || consoleKeyInfo.Key == ConsoleKey.NumPad1)
@@ -32,7 +32,7 @@ namespace MonsterGame
         {
             int playerHP = 150;
             Player player = new Player(playerHP);
-            display.NewGame();
+            DisplayAction.NewGame();
 
             int easyKills = 0;
             int hardKills = 0;
@@ -40,21 +40,21 @@ namespace MonsterGame
             while (player.IsAlive)
             {
                 MonsterEasy monster = SpawnMonster();
-                display.MonsterEncounter();
+                DisplayAction.MonsterEncounter();
                 while (monster.IsAlive)
                 {
                     player.Attack(monster);
-                    display.PlayerAttack();
+                    DisplayAction.PlayerAttack();
                     if (monster.IsAlive)
                     {
-                        display.FailedPlayerAttack();
+                        DisplayAction.FailedPlayerAttack();
                         monster.Attack(player);
                         if (!player.IsAlive)
                             break;
                     }
                     else
                     {
-                        display.MonsterKilled();
+                        DisplayAction.MonsterKilled();
                         if (monster is MonsterHard)
                             hardKills++;
                         else
@@ -62,9 +62,9 @@ namespace MonsterGame
                     }
                 }
             }
-            display.PlayerDeath();
+            DisplayAction.PlayerDeath();
 
-            display.EndGame(easyKills, hardKills);
+            DisplayAction.EndGame(easyKills, hardKills);
             Console.ReadKey();
         }
 
@@ -80,13 +80,13 @@ namespace MonsterGame
             }
             if (player.IsAlive)
             {
-                display.AutoScrollOption = false;
-                display.BossVanquished();
+                DisplayAction.AutoScrollOption = false;
+                DisplayAction.BossVanquished();
             }
             else
             {
-                display.AutoScrollOption = false;
-                display.GameOver();
+                DisplayAction.AutoScrollOption = false;
+                DisplayAction.GameOver();
             }
         }
 

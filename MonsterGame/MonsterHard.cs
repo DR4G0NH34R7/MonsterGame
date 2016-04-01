@@ -23,7 +23,7 @@ namespace MonsterGame
             int crit = Dice.ThrowDice();
             if (crit != 6)
             {
-                display.SpellCast(crit, spellDamage);
+                DisplayAction.SpellCast(crit, spellDamage);
                 player.TakesDamage(crit * spellDamage);
             }
         }

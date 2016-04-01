@@ -8,12 +8,11 @@ namespace MonsterGame
 {
     public class MonsterEasy
     {
-        protected DisplayAction display = new DisplayAction(true);
         protected int damage = 10;
 
         public virtual void Attack(Player player)
         {
-            display.MonsterAttack(damage);
+            DisplayAction.MonsterAttack(damage);
             int MonsterThrow = Dice.ThrowDice();
             int PlayerThrow = Dice.ThrowDice();
             if (MonsterThrow > PlayerThrow)

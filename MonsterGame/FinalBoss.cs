@@ -8,7 +8,6 @@ namespace MonsterGame
 {
     public class FinalBoss
     {
-        protected DisplayAction display = new DisplayAction(true);
         public int HP { get; private set; }
         public bool IsAlive
         {
@@ -23,14 +22,14 @@ namespace MonsterGame
         public void Attack(Player player)
         {
             int damageValue = Dice.ThrowDice(25);
-            display.BossAttack(damageValue);
+            DisplayAction.BossAttack(damageValue);
             player.TakesDamage(damageValue);
         }
 
         public void TakesDamage(int value)
         {
             HP -= value;
-            display.BossHPLeft(HP);
+            DisplayAction.BossHPLeft(HP);
         }
     }
 }
